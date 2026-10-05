@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zahlenmeister</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-wrapper">
+        <!-- HAUPTMENÜ -->
+        <div id="main-menu" class="screen active">
+            <div class="menu-panel">
+                <h1>ZAHLENMEISTER</h1>
+                <div class="menu-buttons">
+                    <button class="btn" onclick="starteSpielVorbereitung()">Spiel starten</button>
+                    <button class="btn" onclick="zeigeHighscore()">Highscore</button>
+                    <button class="btn" onclick="zeigeEinstellungen()">Einstellungen</button>
+                    <button class="btn" onclick="zeigeAnleitung()">Anleitung</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPIELGESCHEHEN / POP-UPS -->
+        <div id="popup-overlay" class="popup-overlay">
+            
+            <!-- EINSTELLUNGEN -->
+            <div id="setup-screen" class="game-box" style="display:none;">
+                <h2>Spielvorbereitung</h2>
+                <div class="form-group">
+                    <label>Schwierigkeitsgrad:</label>
+                    <select id="schwierigkeit">
+                        <option value="20">Leicht (20 Sekunden)</option>
+                        <option value="15" selected>Mittel (15 Sekunden)</option>
+                        <option value="10">Schwer (10 Sekunden)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Untere Grenze:</label>
+                    <input type="number" id="untere-grenze" value="1">
+                </div>
+                <div class="form-group">
+                    <label>Obere Grenze:</label>
+                    <input type="number" id="obere-grenze" value="100">
+                </div>
+                <button class="action-btn" onclick="geheimenZahlenWaehlenScreen()">Zahlen erzeugen</button>
+            </div>
+
+            <!-- GEHEIME ZAHL AUSWÄHLEN -->
+            <div id="secret-choice-screen" class="game-box" style="display:none;">
+                <h2>Wähle deine geheime Zahl</h2>
+                <p>Es wurden 3 unbekannte Zahlen generiert. Wähle eine aus:</p>
+                <div class="menu-buttons-popup" style="margin-top: 15px;">
+                    <button class="action-btn" onclick="waehleGeheimeZahl(1)">Unbekannte Zahl A</button>
+                    <button class="action-btn" onclick="waehleGeheimeZahl(2)">Unbekannte Zahl B</button>
+                    <button class="action-btn" onclick="waehleGeheimeZahl(3)">Unbekannte Zahl C</button>
+                </div>
+            </div>
+
+            <!-- HAUPTSPIEL RUNDEN -->
+            <div id="game-screen" class="game-box" style="display:none;">
+                <div class="game-header">
+                    <span id="display-durchlauf">DURCHLAUF 1</span>
+                    <span id="display-punkte">PUNKTE: 0</span>
+                    <span id="display-timer">Zeit: 15s</span>
+                </div>
+                <div id="frage-container"></div>
+            </div>
+
+            <!-- BONUSFRAGE -->
+            <div id="bonus-screen" class="game-box" style="display:none;">
+                <h2>Bonusfrage</h2>
+                <p>Möchtest du deine unbekannte Zahl erraten?</p>
+                <div id="bonus-buttons" class="menu-buttons-popup" style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
+                    <button class="action-btn" onclick="antwortBonus(true)" style="margin-top: 0;">Ja, tippen!</button>
+                    <button class="action-btn" onclick="antwortBonus(false)" style="margin-top: 0;">Nein, weiter</button>
+                </div>
+                <div id="tipp-input-bereich" style="display:none; margin-top: 15px;">
+                    <input type="number" id="user-tipp" placeholder="Dein Tipp...">
+                    <button class="action-btn" onclick="tippAbgeben()" style="margin-top: 10px;">Absenden</button>
+                </div>
+            </div>
+
+            <!-- GAME OVER & HIGHSCORE SPEICHERN -->
+            <div id="game-over-screen" class="game-box" style="display:none;">
+                <h2>GAME OVER</h2>
+                <p id="game-over-text" style="margin-bottom: 15px;"></p>
+                
+                <div id="highscore-save-bereich" style="margin-bottom: 15px;">
+                    <p style="margin-bottom: 5px; font-size: 0.85rem;">Trage deinen Namen für den Highscore ein:</p>
+                    <input type="text" id="spieler-name" placeholder="Dein Name..." style="width: 100%; padding: 10px; background: #0f071f; border: 1px solid #a855f7; color: #fff; border-radius: 8px; margin-bottom: 10px;">
+                    <button class="action-btn" onclick="highscoreSpeichern()" style="margin-top: 0;">Score speichern</button>
+                </div>
+
+                <button class="action-btn" onclick="zurueckZumMenue()">Zum Hauptmenü</button>
+            </div>
+
+            <!-- HIGHSCORE & ANLEITUNG ANZEIGE -->
+            <div id="info-screen" class="game-box" style="display:none;">
+                <h2 id="info-title">Info</h2>
+                <div id="info-content" style="margin-bottom: 20px; text-align: left; max-height: 200px; overflow-y: auto;"></div>
+                <button class="action-btn" onclick="zurueckZumMenue()">Zurück</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

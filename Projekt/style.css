@@ -1,0 +1,206 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.background-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url('Zahlenmeister_Screenshot.png') no-repeat center center;
+    background-size: cover;
+}
+
+/* Hauptmenü-Panel links im Bild platziert (Lila Design) */
+#main-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 8%;
+}
+
+#main-menu.active {
+    display: flex;
+}
+
+.menu-panel {
+    background: rgba(20, 10, 35, 0.92); /* Kräftigere, flächigere Lila-Abdeckung */
+    border: 2px solid #a855f7; /* Magisches Lila */
+    border-radius: 14px;
+    padding: 35px;
+    width: 340px;
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.4), inset 0 0 20px rgba(168, 85, 247, 0.2);
+    text-align: center;
+}
+
+.menu-panel h1 {
+    color: #e9d5ff;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn {
+    background: linear-gradient(to bottom, #581c87, #3b0764); /* Lila Farbverlauf */
+    color: #e9d5ff;
+    border: 1px solid #a855f7;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+
+.btn:hover {
+    background: linear-gradient(to bottom, #6b21a8, #581c87);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.8);
+    border-color: #c084fc;
+}
+
+/* Pop-up Fenster für das eigentliche Spiel (mittig, flächig ausgefüllt) */
+.popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 2, 10, 0.75); /* Abdunkelung des Hintergrunds */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.game-box {
+    background: rgba(20, 10, 35, 0.95);
+    border: 2px solid #a855f7;
+    border-radius: 14px;
+    padding: 35px;
+    width: 440px;
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.25);
+    text-align: center;
+    color: #f3e8ff;
+}
+
+h2 {
+    color: #e9d5ff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+}
+
+p {
+    color: #d8b4fe;
+    font-size: 0.95rem;
+}
+
+.action-btn {
+    background: linear-gradient(to bottom, #581c87, #3b0764);
+    color: #e9d5ff;
+    border: 1px solid #a855f7;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.action-btn:hover {
+    background: linear-gradient(to bottom, #6b21a8, #581c87);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.8);
+    border-color: #c084fc;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #e9d5ff;
+    font-size: 0.9rem;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    background: #0f071f;
+    border: 1px solid #a855f7;
+    color: #fff;
+    border-radius: 8px;
+    outline: none;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #c084fc;
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #e9d5ff;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.4);
+    padding-bottom: 10px;
+}
+
+#frage-container {
+    margin-top: 10px;
+}
+/* Highscore Tabelle Styling */
+.highscore-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: #e9d5ff;
+}
+
+.highscore-table th, .highscore-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.highscore-table th {
+    color: #c084fc;
+}
