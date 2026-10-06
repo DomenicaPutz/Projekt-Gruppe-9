@@ -1,0 +1,50 @@
+{
+    "spiel": {
+        "name": "Zahlenmeister",
+        "basisPunkte": 10,
+        "bonusRichtigerTipp": 100,
+        "strafeFalscherTipp": 50,
+        "highscoreEintraege": 5,
+        "minimaleBereichsgroesse": 4
+    },
+    "schwierigkeit": {
+        "leicht": {
+            "label": "Leicht",
+            "zeitlimit": 20
+        },
+        "mittel": {
+            "label": "Mittel",
+            "zeitlimit": 15
+        },
+        "schwer": {
+            "label": "Schwer",
+            "zeitlimit": 10
+        }
+    },
+    "runden": [
+        {
+            "nummer": 1,
+            "typ": "geradeUngerade",
+            "titel": "RUNDE 1 — GERADE ODER UNGERADE",
+            "text": "Ist deine unbekannte Zahl gerade oder ungerade?"
+        },
+        {
+            "nummer": 2,
+            "typ": "hoeherTiefer",
+            "titel": "RUNDE 2 — HÖHER ODER TIEFER",
+            "text": "Ist deine unbekannte Zahl höher oder tiefer als"
+        },
+        {
+            "nummer": 3,
+            "typ": "dazwischenAusserhalb",
+            "titel": "RUNDE 3 — DAZWISCHEN ODER AUSSERHALB",
+            "text": "Liegt deine unbekannte Zahl zwischen den beiden Zahlen?"
+        },
+        {
+            "nummer": 4,
+            "typ": "zahlenbereich",
+            "titel": "RUNDE 4 — ZAHLENBEREICH",
+            "text": "In welchem Zahlenbereich liegt deine unbekannte Zahl?"
+        }
+    ]
+}
